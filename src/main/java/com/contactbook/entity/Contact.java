@@ -21,7 +21,7 @@ public class Contact {
     @Column(nullable = false, length = 300)
     private String emailContact;
 
-    @Column(nullable = false, length = 300)
+    @Column(nullable = false)
     private Boolean favoriteContact;
 
 
