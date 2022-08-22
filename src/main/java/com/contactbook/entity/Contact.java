@@ -13,15 +13,16 @@ public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_contact")
     private Integer idContact;
 
-    @Column(nullable = false, length = 300)
+    @Column(name = "name_contact", nullable = false, length = 100)
     private String nameContact;
 
-    @Column(nullable = false, length = 300)
+    @Column(name = "email_contact", nullable = false, length = 50)
     private String emailContact;
 
-    @Column(nullable = false)
+    @Column(name = "favorite_contact")
     private Boolean favoriteContact;
 
 
