@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/api/contact")
 @CrossOrigin("*")
@@ -20,5 +22,13 @@ public class ContactController {
     public Contact save(@RequestBody Contact contact){
         return repository.save(contact);
     }
+
+    @GetMapping(value = "/list")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Contact> list(){ return repository.findAll(); }
+
+    @DeleteMapping("/delete/{idContato}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete (@PathVariable("idContato") Integer idContato ){ repository.deleteById(idContato);}
 
 }
