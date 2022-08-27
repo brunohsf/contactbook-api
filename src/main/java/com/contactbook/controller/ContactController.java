@@ -19,16 +19,26 @@ public class ContactController {
 
     @PostMapping(value = "/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Contact save(@RequestBody Contact contact){
+    public Contact save(@RequestBody Contact contact) {
         return repository.save(contact);
     }
 
     @GetMapping(value = "/list")
     @ResponseStatus(HttpStatus.OK)
-    public List<Contact> list(){ return repository.findAll(); }
+    public List<Contact> list() {
+        return repository.findAll();
+    }
 
     @DeleteMapping("/delete/{idContato}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete (@PathVariable("idContato") Integer idContato ){ repository.deleteById(idContato);}
+    public void delete(@PathVariable("idContato") Integer idContato) {
+        repository.deleteById(idContato);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.OK)
+    public Contact update(@RequestBody Contact contact) {
+        return repository.save(contact);
+    }
 
 }
