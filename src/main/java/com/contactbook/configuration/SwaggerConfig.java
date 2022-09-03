@@ -1,14 +1,13 @@
 package com.contactbook.configuration;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -29,16 +28,18 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
                 .apiInfo(apiEndPointsInfo());
     }
 
-    private ApiInfo apiEndPointsInfo() {
+    private ApiInfo apiEndPointsInfo(){
         return new ApiInfoBuilder().title("Contact Book API")
                 .description("Contact Book API for Fatec Jales")
-                .contact(new Contact("Fatec Jales", "www.fatecjales.edu.br", "coordenacao@fatecjales.com.br"))
+                .contact(new Contact("Fatec Jales",
+                                        "www.fatecjales.edu.com",
+                                            "coordenacao@fatecjales.edu.br"))
                 .version("1.0.0")
                 .build();
     }
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry){
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
