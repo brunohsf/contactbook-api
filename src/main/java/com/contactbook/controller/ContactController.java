@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/contact")
-@Api(value = "API Rest for contacts management")
+@Api(value = "API Rest for Contacts Management")
 @CrossOrigin("*")
 public class ContactController {
 
@@ -20,30 +20,30 @@ public class ContactController {
     private ContactRepository repository;
 
     @PostMapping(value = "/save")
-    @ApiOperation("Insert contact in table contact")
     @ResponseStatus(HttpStatus.CREATED)
-    public Contact save(@RequestBody Contact contact){
+    @ApiOperation(value = "Insert contact in table contact")
+    public Contact save(@RequestBody Contact contact) {
         return repository.save(contact);
     }
 
     @GetMapping(value = "/list")
-    @ApiOperation(value = "Return a contact list")
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Return a contact list")
     public List<Contact> list() {
         return repository.findAll();
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    @ApiOperation("Delete a contact from table")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id){
+    @ApiOperation(value = "Delete a contact from the table")
+    public void delete(@PathVariable Integer id) {
         repository.deleteById(id);
     }
 
     @PutMapping("/update")
-    @ApiOperation("Update a contact in table contact")
     @ResponseStatus(HttpStatus.OK)
-    public Contact update(@RequestBody Contact contact){
+    @ApiOperation(value = "Update a contact from the table")
+    public Contact update(@RequestBody Contact contact) {
         return repository.save(contact);
     }
 }

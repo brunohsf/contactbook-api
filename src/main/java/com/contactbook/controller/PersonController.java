@@ -1,7 +1,6 @@
 package com.contactbook.controller;
 
-
-
+import com.contactbook.entity.Contact;
 import com.contactbook.entity.Person;
 import com.contactbook.repository.PersonRepository;
 import io.swagger.annotations.Api;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/person")
-@Api(value = "API Rest for people management")
+@Api(value = "API Rest for User Management")
 @CrossOrigin("*")
 public class PersonController {
 
@@ -22,30 +21,17 @@ public class PersonController {
     private PersonRepository repository;
 
     @PostMapping(value = "/save")
-    @ApiOperation("Insert person in table person")
     @ResponseStatus(HttpStatus.CREATED)
-    public Person save(@RequestBody Person person){
+    @ApiOperation(value = "Insert user in table user")
+    public Person save(@RequestBody Person person) {
         return repository.save(person);
     }
 
     @GetMapping(value = "/list")
-    @ApiOperation(value = "Return a contact list")
     @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Return a person list")
     public List<Person> list() {
         return repository.findAll();
     }
 
-    @DeleteMapping(value = "/delete/{id}")
-    @ApiOperation("Delete a person from table")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id){
-        repository.deleteById(id);
-    }
-
-    @PutMapping("/update")
-    @ApiOperation("Update a person in table person")
-    @ResponseStatus(HttpStatus.OK)
-    public Person update(@RequestBody Person person){
-        return repository.save(person);
-    }
 }
