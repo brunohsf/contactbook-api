@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -22,9 +25,12 @@ public class Customer {
     private Integer idCustomer;
 
     @Column(name = "name_customer", nullable = false, length = 300)
+    @NotEmpty
     private String nameCustomer;
 
-    @Column(name = "cpf_customer", nullable = false, length = 300, unique = true)
+    @Column(name = "cpf_customer", nullable = false, length = 11, unique = true)
+    @NotNull
+    @CPF
     private String cpfCustomer;
 
     @Column(name = "date_created_customer", updatable = false)
